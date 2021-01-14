@@ -7,14 +7,14 @@ Der ULP-Coprozessor unterstützt ADC-Messbefehle im Ultra-Low-Power-Modus, eine 
 
 Die folgende Tabelle zeigt die Kanal- und zugehörigen Pin-Informationen für den SAR ADC.
 
-![](... /... /... /documents/_static/ulp_adc/3.png)
+![](../../../documents/_static/ulp_adc/3.png)
 
 ### 2. Hardware-Schaltplan
 In diesem Beispiel verwenden wir den SAR ADC1 mit dem Eingangspin GPIO34, der dem SAR_MUX Kanal 7 entspricht, und den NTC-Thermistor Typ 3950 100K 1%.
 
 Der NTC-Thermistortyp ist 3950 100K 1%.
 
-![](... /... /... /documents/_static/ulp_adc/1.png)
+![](../../../documents/_static/ulp_adc/1.png)
 
 ### 3. Software-Teil
 Der NTC-Thermistor ist nichtlinear mit der Temperatur, daher haben wir eine Tabelle mit ADC-Werten von -5°C bis 100°C im Assemblerprogramm mit einer Lookup-Methode erstellt.
@@ -107,5 +107,5 @@ printf("Temperatur:%d ℃ \n", (int16_t)ulp_temperature - 5);
 ### 4. endgültiger Effekt
 Nach der Berechnung der Raumtemperatur wecken Sie die CPU auf, um den Wert der Raumtemperatur zu drucken. Der folgende Screenshot zeigt den Test mit einem Finger, der Wärme an den Thermistor abgibt, und den Druck der seriellen Schnittstelle.
 
-![](... /... /... /documents/_static/ulp_adc/2.png)
+![](../../../documents/_static/ulp_adc/2.png)
 
