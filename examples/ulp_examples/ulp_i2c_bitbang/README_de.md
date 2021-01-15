@@ -7,7 +7,7 @@ Dieser Artikel ist ein Beispiel für einen ULP-Coprozessor, der einen I2C-Host s
 Das per Software simulierte I2C-Beispiel verwendet zwei Pins RTC_GPIO9, RTC_GPIO8, die entsprechenden GPIO-Pins sind wie folgt 
 
 |I2C_PIN|RTC_GPIO|GPIO|
-|I2C_SCL|RTC_GPIO|GPIO|
+|---|---|---|
 |I2C_SCL|RTC_GPIO9|GPIO32|
 |I2C_SDA|RTC_GPIO8|GPIO33|
 
@@ -65,8 +65,8 @@ Da die aktuelle ULP-Coprozessor-Assembly-Umgebung keine Operationen in Bezug auf
 ## 4. i2c.S Baugruppen-Funktionsbeschreibung
 Es steht dem Anwender frei, die Assembler-Funktionen in der folgenden Tabelle aufzurufen, um sie zu eigenen I2C-Lese-/Schreibfunktionen zu kombinieren, und er sollte darauf achten, vor dem Aufruf der Unterfunktionen das Makro psr einzufügen, um die Rücksprungadresse der Assembler-Unterfunktionen zu erhalten.
 
-|Assemblerfunktion | Eingangsargumente | Rückgabeargumente | Übergabeform | Funktionsbeschreibung
-|:---:|:---|:---:|:---:|:---:|:---:|--|
+|Nr.|Assemblerfunktion | Eingangsargumente | Rückgabeargumente | Übergabeform | Funktionsbeschreibung|
+|:---:|:---|:---:|:---:|:---:|---|
 |1|i2c_start_cond|i2c_didInit, i2c_started|i2c_didInit, i2c_started|globale Variablen|Prüfen, ob I2C-Pin initialisiert ist und I2C_START erfolgt ist, I2C-Pin initialisieren und I2C_START-Signal senden|
 |2|i2c_stop_cond| - |i2c_started |globale Variable |sende I2C_STOP Signal, lösche i2c_started Wert|
 |3|i2c_write_bit|R0| - |register|Senden von BIT0 oder BIT1 je nach Wert von R0 |
@@ -75,8 +75,8 @@ Es steht dem Anwender frei, die Assembler-Funktionen in der folgenden Tabelle au
 |6|i2c_read_byte| R0 |R0|register| Liest 1 Byte Daten von der SDA-Datenleitung und antwortet ACK oder NACK entsprechend dem übergebenen Wert von R0, die zurückgegebenen Daten werden in R0 gespeichert |# 5.
 
 ## 5. i2c_dev.S Assembly Funktion
-|Assemblerfunktion | Eingangsargumente | Rückgabeargumente | Form der Übergabe | Funktionsbeschreibung
-|:---:|:---|:---:|:---:|:---:|--:|--|
+|Nr.|Assemblerfunktion | Eingangsargumente | Rückgabeargumente | Form der Übergabe | Funktionsbeschreibung
+|:---:|:---|:---:|:---:|:---:|--:|---|
 |1|Read_BH1750|BH1750_ADDR_R, R2| R2 |Stack, globale Variable|Read 16bit value from I2C BUS|
 |2|Cmd_Write_BH1750|Dev_addr, Command| - |Stack | Write Command|
 |3|Start_BH1750|Dev_addr, Befehl| - |Stack|Betriebsart BH1750 einstellen|
